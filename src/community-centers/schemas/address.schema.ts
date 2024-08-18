@@ -51,22 +51,25 @@ export const validatePostalCode: SchemaValidateType = {
   message: validatePostalCodeErrorMessage,
 };
 
-const AddressSchema = new Schema<AddressType>({
-  street: { type: String, required: true },
-  number: { type: String, required: true, default: 'S/N' },
-  complement: { type: String },
-  neighborhood: { type: String },
-  city: { type: String, required: true },
-  state: {
-    type: String,
-    required: true,
-    enum: Object.values(AddressStatesEnum),
+const AddressSchema = new Schema<AddressType>(
+  {
+    street: { type: String, required: true },
+    number: { type: String, required: true, default: 'S/N' },
+    complement: { type: String },
+    neighborhood: { type: String },
+    city: { type: String, required: true },
+    state: {
+      type: String,
+      required: true,
+      enum: Object.values(AddressStatesEnum),
+    },
+    postalCode: {
+      type: String,
+      required: true,
+      validate: validatePostalCode,
+    },
   },
-  postalCode: {
-    type: String,
-    required: true,
-    validate: validatePostalCode,
-  },
-});
+  { _id: false },
+);
 
 export { AddressSchema };

@@ -20,17 +20,20 @@ export const validateLongitude: SchemaValidateType = {
   message: validateLongitudeErrorMessage,
 };
 
-const LocationSchema = new Schema<LocationType>({
-  latitude: {
-    type: Number,
-    required: true,
-    validate: validateLatitude,
+const LocationSchema = new Schema<LocationType>(
+  {
+    latitude: {
+      type: Number,
+      required: true,
+      validate: validateLatitude,
+    },
+    longitude: {
+      type: Number,
+      required: true,
+      validate: validateLongitude,
+    },
   },
-  longitude: {
-    type: Number,
-    required: true,
-    validate: validateLongitude,
-  },
-});
+  { _id: false },
+);
 
 export { LocationSchema };

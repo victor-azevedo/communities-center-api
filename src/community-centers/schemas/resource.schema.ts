@@ -25,35 +25,38 @@ export const validateResourceQuantity: SchemaValidateType = {
   message: validateResourceQuantityErrorMessage,
 };
 
-export const ResourceSchema = new Schema<ResourceType>({
-  [ResourceEnum.Medical]: {
-    type: Number,
-    required: true,
-    validate: validateResourceQuantity,
-    default: 0,
+export const ResourceSchema = new Schema<ResourceType>(
+  {
+    [ResourceEnum.Medical]: {
+      type: Number,
+      required: true,
+      validate: validateResourceQuantity,
+      default: 0,
+    },
+    [ResourceEnum.Volunteer]: {
+      type: Number,
+      required: true,
+      validate: validateResourceQuantity,
+      default: 0,
+    },
+    [ResourceEnum.MedicalKit]: {
+      type: Number,
+      required: true,
+      validate: validateResourceQuantity,
+      default: 0,
+    },
+    [ResourceEnum.TransportVehicle]: {
+      type: Number,
+      required: true,
+      validate: validateResourceQuantity,
+      default: 0,
+    },
+    [ResourceEnum.FoodBasket]: {
+      type: Number,
+      required: true,
+      validate: validateResourceQuantity,
+      default: 0,
+    },
   },
-  [ResourceEnum.Volunteer]: {
-    type: Number,
-    required: true,
-    validate: validateResourceQuantity,
-    default: 0,
-  },
-  [ResourceEnum.MedicalKit]: {
-    type: Number,
-    required: true,
-    validate: validateResourceQuantity,
-    default: 0,
-  },
-  [ResourceEnum.TransportVehicle]: {
-    type: Number,
-    required: true,
-    validate: validateResourceQuantity,
-    default: 0,
-  },
-  [ResourceEnum.FoodBasket]: {
-    type: Number,
-    required: true,
-    validate: validateResourceQuantity,
-    default: 0,
-  },
-});
+  { _id: false },
+);
