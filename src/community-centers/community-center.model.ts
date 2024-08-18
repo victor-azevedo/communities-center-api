@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
+import { SchemaValidateType } from '../types/schema-validate.type';
 import { AddressSchema, AddressType } from './schemas/address.schema';
 import { LocationSchema, LocationType } from './schemas/location.schema';
-import { ResourceType } from './schemas/resource.schema';
-import { SchemaValidateType } from '../types/schema-validate.type';
+import { ResourceSchema, ResourceType } from './schemas/resource.schema';
 
 export type CommunityCenterType = {
   name: string;
@@ -45,7 +45,7 @@ const CommunityCenterSchema = new Schema<CommunityCenterType>(
       default: 0,
       validate: validateCurrentOccupancy,
     },
-    resources: { type: Object, required: true, default: {} },
+    resources: { type: ResourceSchema, required: true },
   },
   {
     timestamps: true,

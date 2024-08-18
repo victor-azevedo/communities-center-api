@@ -1,14 +1,10 @@
-import { model, connect, disconnect } from 'mongoose';
-import {
-  CommunityCenterModel,
-  CommunityCenterType,
-} from './community-center.model';
+import { CommunityCenterModel } from './community-center.model';
+import { validatePostalCodeErrorMessage } from './schemas/address.schema';
 import {
   validateLatitudeErrorMessage,
-  validateLongitude,
   validateLongitudeErrorMessage,
 } from './schemas/location.schema';
-import { validatePostalCodeErrorMessage } from './schemas/address.schema';
+import { ResourceEnum } from './schemas/resource.schema';
 
 describe('[CommunityCenterModel] ', () => {
   it('should save a valid community center', async () => {
@@ -27,7 +23,13 @@ describe('[CommunityCenterModel] ', () => {
       },
       maxCapacity: 100,
       currentOccupancy: 50,
-      resources: {},
+      resources: {
+        [ResourceEnum.Medical]: 50,
+        [ResourceEnum.MedicalKit]: 50,
+        [ResourceEnum.FoodBasket]: 50,
+        [ResourceEnum.TransportVehicle]: 50,
+        [ResourceEnum.Volunteer]: 50,
+      },
     });
 
     const savedCommunityCenter = await communityCenterValid.save();
@@ -36,6 +38,63 @@ describe('[CommunityCenterModel] ', () => {
     expect(savedCommunityCenter.address.postalCode).toBe('12345-678');
     expect(savedCommunityCenter.location.latitude).toBe(-23.5505);
     expect(savedCommunityCenter.location.longitude).toBe(-46.6333);
+  });
+
+  it('should save a valid community center, with resources default 0', async () => {
+    const communityCenterValid = new CommunityCenterModel({
+      name: 'Community Center 1',
+      address: {
+        street: 'Rua Teste',
+        number: '123',
+        city: 'São Paulo',
+        state: 'SP',
+        postalCode: '12345-678',
+      },
+      location: {
+        latitude: -23.5505,
+        longitude: -46.6333,
+      },
+      maxCapacity: 100,
+      currentOccupancy: 50,
+      resources: {
+        [ResourceEnum.FoodBasket]: 50,
+        [ResourceEnum.TransportVehicle]: 50,
+        [ResourceEnum.Volunteer]: 50,
+      },
+    });
+
+    const savedCommunityCenter = await communityCenterValid.save();
+    expect(savedCommunityCenter._id).toBeDefined();
+    expect(savedCommunityCenter.name).toBe('Community Center 1');
+    expect(savedCommunityCenter.address.postalCode).toBe('12345-678');
+    expect(savedCommunityCenter.location.latitude).toBe(-23.5505);
+    expect(savedCommunityCenter.location.longitude).toBe(-46.6333);
+    expect(savedCommunityCenter.resources[ResourceEnum.Medical]).toBe(0);
+    expect(savedCommunityCenter.resources[ResourceEnum.MedicalKit]).toBe(0);
+    expect(savedCommunityCenter.resources[ResourceEnum.FoodBasket]).toBe(50);
+  });
+
+  it('should fail to save a community center without resources', async () => {
+    const communityCenterWithoutResources = new CommunityCenterModel({
+      name: 'Community Center 1',
+      address: {
+        street: 'Rua Teste',
+        number: '123',
+        city: 'São Paulo',
+        state: 'SP',
+        postalCode: '12345-678',
+      },
+      location: {
+        latitude: -23.5505,
+        longitude: -46.6333,
+      },
+      maxCapacity: 100,
+      currentOccupancy: 50,
+    });
+
+    await expect(communityCenterWithoutResources.save()).rejects.toThrow(
+      /resource/,
+    );
   });
 
   it('should fail to save a community center with an invalid state', async () => {
