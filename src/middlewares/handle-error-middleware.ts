@@ -15,6 +15,8 @@ export const handleApplicationError = (
     message: err.message,
   };
 
+  console.error(err);
+
   // Adiciona o stack apenas em ambiente de desenvolvimento
   if (process.env.NODE_ENV === 'development') {
     console.error(err);

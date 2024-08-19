@@ -2,11 +2,11 @@ import { Schema } from 'mongoose';
 import { SchemaValidateType } from '../../types/schema-validate.type';
 
 export enum ResourceEnum {
-  Medical = 'Médico',
-  Volunteer = 'Voluntário',
-  MedicalKit = 'Kit de suprimentos médicos',
-  TransportVehicle = 'Veículo de transporte',
-  FoodBasket = 'Cesta básica',
+  Medical = 'Medical',
+  Volunteer = 'Volunteer',
+  MedicalKit = 'MedicalKit',
+  TransportVehicle = 'TransportVehicle',
+  FoodBasket = 'FoodBasket',
 }
 
 export type ResourceType = {

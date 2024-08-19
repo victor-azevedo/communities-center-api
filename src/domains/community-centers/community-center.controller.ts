@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
-import { CommunityCenterType } from './community-center.model';
 import { communityCenterService } from './community-center.service';
+import { CommunityCenterType } from './community-center.model';
+import { ResourceExchangeDto } from './dto/resources-exchange.dto';
 
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
@@ -35,7 +36,25 @@ async function updateCurrentOccupancy(
   }
 }
 
+async function resourceExchange(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const resourceExchangeDto = req.body as ResourceExchangeDto;
+
+    const data =
+      await communityCenterService.resourceExchange(resourceExchangeDto);
+
+    return res.status(httpStatus.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export const communityCenterController = {
   create,
   updateCurrentOccupancy,
+  resourceExchange,
 };
