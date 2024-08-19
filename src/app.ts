@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from 'express';
-import communityCenterRouter from './community-centers/community-center.route';
 import { handleApplicationError } from './middlewares/handle-error-middleware';
+import communityCenterRouter from './domains/community-centers/community-center.route';
 
 const app: Application = express();
 

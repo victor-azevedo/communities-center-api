@@ -1,7 +1,7 @@
 import mongoose, { mongo } from 'mongoose';
-import { ConflictError, NotFoundError } from '../errors';
 import { communityCenterRepository } from './community-center.repository';
 import { CreateCommunityCenterDto } from './dto/create-community-center.dto';
+import { ConflictError, NotFoundError } from '../../errors';
 
 async function create(dto: CreateCommunityCenterDto) {
   return await communityCenterRepository.create(dto);

@@ -1,9 +1,9 @@
 import { model, Schema } from 'mongoose';
-import { SchemaValidateType } from '../types/schema-validate.type';
 import { AddressSchema, AddressType } from './schemas/address.schema';
 import { LocationSchema, LocationType } from './schemas/location.schema';
-import { ResourceSchema, ResourceType } from './schemas/resource.schema';
-import { BadRequestError, NotFoundError } from '../errors';
+import { SchemaValidateType } from '../../types/schema-validate.type';
+import { ResourceSchema, ResourceType } from '../resources/resource.schema';
+import { BadRequestError } from '../../errors';
 
 export type CommunityCenterType = {
   name: string;

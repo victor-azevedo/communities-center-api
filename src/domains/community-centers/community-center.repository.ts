@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { CommunityCenterModel } from './community-center.model';
 import { CreateCommunityCenterDto } from './dto/create-community-center.dto';
-import { NotFoundError } from '../errors';
+import { NotFoundError } from '../../errors';
 
 async function create(dto: CreateCommunityCenterDto) {
   return await CommunityCenterModel.create(dto);

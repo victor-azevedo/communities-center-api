@@ -4,7 +4,7 @@ import {
   validateLatitudeErrorMessage,
   validateLongitudeErrorMessage,
 } from './schemas/location.schema';
-import { ResourceEnum } from './schemas/resource.schema';
+import { ResourceEnum } from '../resources/resource.schema';
 
 describe('[CommunityCenterModel] ', () => {
   it('should save a valid community center', async () => {

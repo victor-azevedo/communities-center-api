@@ -1,6 +1,6 @@
 import { AddressType } from '../schemas/address.schema';
 import { LocationType } from '../schemas/location.schema';
-import { ResourceType } from '../schemas/resource.schema';
+import { ResourceType } from '../../resources/resource.schema';
 
 export type CreateCommunityCenterDto = {
   name: string;

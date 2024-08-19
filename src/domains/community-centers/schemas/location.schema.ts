@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { SchemaValidateType } from '../../types/schema-validate.type';
+import { SchemaValidateType } from '../../../types/schema-validate.type';
 
 export type LocationType = {
   latitude: number;
