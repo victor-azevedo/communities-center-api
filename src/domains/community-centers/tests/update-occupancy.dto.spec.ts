@@ -1,5 +1,5 @@
 import { ObjectSchema } from 'joi';
-import { updateOccupancyDtoSchema } from './update-occupancy.dto';
+import { updateOccupancyDtoSchema } from '../dto/update-occupancy.dto';
 
 describe('updateOccupancyDtoSchema', () => {
   it('should validate a valid update occupancy DTO', () => {
