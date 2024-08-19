@@ -1,9 +1,9 @@
 import httpStatus from 'http-status';
-import request from 'supertest';
-import app from './../src/app';
 import mongoose from 'mongoose';
-import { ResourceEnum } from '../src/domains/resources/resource.schema';
-import { CommunityCenterModel } from '../src/domains/community-centers/community-center.model';
+import request from 'supertest';
+import app from '../../../app';
+import { ResourceEnum } from '../../resources/resource.schema';
+import { CommunityCenterModel } from '../community-center.model';
 
 describe('POST /community-centers', () => {
   // Teste existente para criação bem-sucedida

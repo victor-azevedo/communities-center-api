@@ -1,10 +1,10 @@
-import { CommunityCenterModel } from './community-center.model';
-import { validatePostalCodeErrorMessage } from './schemas/address.schema';
+import { CommunityCenterModel } from '../community-center.model';
+import { validatePostalCodeErrorMessage } from '../schemas/address.schema';
 import {
   validateLatitudeErrorMessage,
   validateLongitudeErrorMessage,
-} from './schemas/location.schema';
-import { ResourceEnum } from '../resources/resource.schema';
+} from '../schemas/location.schema';
+import { ResourceEnum } from '../../resources/resource.schema';
 
 describe('[CommunityCenterModel] ', () => {
   it('should save a valid community center', async () => {

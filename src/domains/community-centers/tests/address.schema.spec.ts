@@ -1,4 +1,4 @@
-import { validatePostalCode } from './address.schema';
+import { validatePostalCode } from '../schemas/address.schema';
 
 describe('[AddressSchema] validatePostalCode', () => {
   it('should return true for a valid postal code in the format xxxxx-xxx', () => {

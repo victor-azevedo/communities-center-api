@@ -3,7 +3,7 @@ import {
   validateLatitudeErrorMessage,
   validateLongitude,
   validateLongitudeErrorMessage,
-} from './location.schema';
+} from '../schemas/location.schema';
 
 describe('[LocationModel] validateLatitude', () => {
   it('should return true for a valid latitude within the range -90 to 90', () => {
