@@ -1,23 +1,36 @@
-# Initial Configs for a TypeScript Node-Express-MongoDb Application with Jest
+# Community Centers
 
-### How Start?
+## Getting Started
 
-First Clone this repo;
+### 1. Clone the Repository
 
-Install dependence's:
+Start by cloning this repository:
 
 ```bash
+git clone https://github.com/victor-azevedo/communities-center-api
+```
+
+### 2. Install Dependencies
+
+Navigate to the project directory and install the required dependencies:
+
+```bash
+cd communities-center-api
 yarn
 ```
 
-For run application in Development mode:
+### 3. Run the Application
+
+To run the application in development mode, use the following command:
 
 ```bash
 yarn dev
 ```
 
-For test connection health:
+### 4. Run Tests
+
+To execute the tests, run:
 
 ```bash
-yarn test health
+yarn test
 ```
