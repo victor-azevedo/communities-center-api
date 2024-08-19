@@ -5,7 +5,10 @@ import app from './app';
 import { mongoConfig } from './database/mongo.config';
 
 const initServer = async () => {
+  console.log('[LOG] Starting server...');
+
   await mongoConfig();
+  console.log('[LOG] Connected to MongoDB');
 
   const DEFAULT_PORT = 3000;
 
