@@ -34,9 +34,6 @@ function isExchangePossible(
   const isAOverload = occupationPercentageFromA > OVERLOAD_PERCENTAGE;
   const isBOverload = occupationPercentageFromB > OVERLOAD_PERCENTAGE;
 
-  console.log('centerAPoints', centerAPoints);
-  console.log('centerBPoints', centerBPoints);
-
   // Se A estiver sobrecarregado e B não, permitir a troca com A tendo menos pontos
   if (isAOverload && !isBOverload && centerAPoints <= centerBPoints) {
     return true;

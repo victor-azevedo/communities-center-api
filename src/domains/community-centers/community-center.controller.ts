@@ -4,6 +4,28 @@ import { communityCenterService } from './community-center.service';
 import { CommunityCenterType } from './community-center.model';
 import { ResourceExchangeDto } from './dto/resources-exchange.dto';
 
+async function getAll(req: Request, res: Response, next: NextFunction) {
+  try {
+    const data = await communityCenterService.getAll();
+
+    return res.status(httpStatus.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getById(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { id } = req.params;
+
+    const data = await communityCenterService.getById(id);
+
+    return res.status(httpStatus.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function create(req: Request, res: Response, next: NextFunction) {
   try {
     const crateCommunityDto = req.body as CommunityCenterType;
@@ -54,6 +76,8 @@ async function resourceExchange(
 }
 
 export const communityCenterController = {
+  getAll,
+  getById,
   create,
   updateCurrentOccupancy,
   resourceExchange,

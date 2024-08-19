@@ -5,6 +5,10 @@ import { updateOccupancyDtoSchema } from './dto/update-occupancy.dto';
 
 const communityCenterRouter = Router();
 
+communityCenterRouter.get('/', communityCenterController.getAll);
+
+communityCenterRouter.get('/:id', communityCenterController.getById);
+
 communityCenterRouter.post('/', communityCenterController.create);
 
 communityCenterRouter.patch(

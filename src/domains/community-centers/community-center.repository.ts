@@ -4,6 +4,10 @@ import { CreateCommunityCenterDto } from './dto/create-community-center.dto';
 import { NotFoundError } from '../../errors';
 import { ResourceType } from '../resources/resource.schema';
 
+async function getAll() {
+  return await CommunityCenterModel.find();
+}
+
 async function create(dto: CreateCommunityCenterDto) {
   return await CommunityCenterModel.create(dto);
 }
@@ -65,6 +69,7 @@ async function updateResourcesAB(
 }
 
 export const communityCenterRepository = {
+  getAll,
   create,
   updateCurrentOccupancy,
   findById,

@@ -11,6 +11,20 @@ export const calculateOccupationPercentage = (
   return (occupation / maxCapacity) * 100;
 };
 
+async function getAll() {
+  return await communityCenterRepository.getAll();
+}
+
+async function getById(id: string) {
+  const communityCenter = await communityCenterRepository.findById(id);
+
+  if (!communityCenter) {
+    throw new NotFoundError('Community Center not found');
+  }
+
+  return communityCenter;
+}
+
 async function create(dto: CreateCommunityCenterDto) {
   return await communityCenterRepository.create(dto);
 }
@@ -101,6 +115,8 @@ async function resourceExchange(resourceExchange: ResourceExchangeDto) {
 }
 
 export const communityCenterService = {
+  getAll,
+  getById,
   create,
   updateCurrentOccupancy,
   resourceExchange,
