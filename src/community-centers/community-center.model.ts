@@ -66,7 +66,9 @@ export const validateOccupancy: (this: CommunityCenterType) => boolean =
 
 CommunityCenterSchema.pre('validate', function (next) {
   if (!validateOccupancy.call(this)) {
-    return next(new BadRequestError(validateOccupancyErrorMessage));
+    return next(
+      new BadRequestError({ message: validateOccupancyErrorMessage }),
+    );
   }
   next();
 });

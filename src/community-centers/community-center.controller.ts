@@ -15,6 +15,27 @@ async function create(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function updateCurrentOccupancy(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
+  try {
+    const { id } = req.params;
+    const { currentOccupancy } = req.body;
+
+    const data = await communityCenterService.updateCurrentOccupancy(
+      id,
+      parseInt(currentOccupancy),
+    );
+
+    return res.status(httpStatus.OK).send(data);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export const communityCenterController = {
   create,
+  updateCurrentOccupancy,
 };
