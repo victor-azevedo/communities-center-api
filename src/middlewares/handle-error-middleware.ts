@@ -8,8 +8,6 @@ export const handleApplicationError = (
   res: Response,
   _next: NextFunction,
 ) => {
-  console.error(err);
-
   const bodyErrorResponse: {
     message: string;
     stack?: string;
@@ -19,6 +17,7 @@ export const handleApplicationError = (
 
   // Adiciona o stack apenas em ambiente de desenvolvimento
   if (process.env.NODE_ENV === 'development') {
+    console.error(err);
     bodyErrorResponse.stack = err.stack;
   }
 
