@@ -3,6 +3,7 @@ import { SchemaValidateType } from '../types/schema-validate.type';
 import { AddressSchema, AddressType } from './schemas/address.schema';
 import { LocationSchema, LocationType } from './schemas/location.schema';
 import { ResourceSchema, ResourceType } from './schemas/resource.schema';
+import { BadRequestError, NotFoundError } from '../errors';
 
 export type CommunityCenterType = {
   name: string;
@@ -65,7 +66,7 @@ export const validateOccupancy: (this: CommunityCenterType) => boolean =
 
 CommunityCenterSchema.pre('validate', function (next) {
   if (!validateOccupancy.call(this)) {
-    return next(new Error(validateOccupancyErrorMessage));
+    return next(new BadRequestError(validateOccupancyErrorMessage));
   }
   next();
 });
